@@ -33,6 +33,13 @@ print(words)
 from collections import Counter
 Counter(words)
 
+from collections import Counter
+years = np.arange(1994,2019)
+frame = pd.DataFrame()
+frame["Year"]=years
+frame["Word"]=words
+print(frame)
+
 from fuzzywuzzy import fuzz
 all_ratios = []
 for i in range(len(words)):
