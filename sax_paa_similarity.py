@@ -1,5 +1,6 @@
-
+#!pip install fix_yahoo_finance --upgrade --no-cache-dir
 # !pip install saxpy
+import pandas as pd
 from tqdm import tqdm
 import numpy as np
 from saxpy.znorm import znorm
