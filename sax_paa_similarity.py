@@ -1,5 +1,5 @@
 
-!pip install saxpy
+# !pip install saxpy
 from tqdm import tqdm
 import numpy as np
 from saxpy.znorm import znorm
@@ -42,7 +42,11 @@ for i in range(len(words)):
   all_ratios.append(year_ratios)
   
 comps = pd.DataFrame(np.vstack(all_ratios))
+comps.columns=np.arange(1994,2019)
+comps.index = np.arange(1994,2019)
 comps
+
+
 for i in range(len(comps)):
   f = [x for x in comps.iloc[i,:] if x!=100]
   most = np.argmax(f)
