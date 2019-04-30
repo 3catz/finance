@@ -1,4 +1,5 @@
 #install numpy, pandas, fix_yahoo_finance, saxpy, matplotlib
+import fix_yahoo_finance as yf
 
 hist = yf.download(tickers = "DJI", period = 'max')
 hist = hist["Close"]
