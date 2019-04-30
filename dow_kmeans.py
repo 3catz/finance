@@ -26,3 +26,4 @@ for yi in range(6):
     plt.ylim(-4, 4)
     if yi == 1:
         plt.title("Euclidean $k$-means")
+fig.savefig('dowjones_clusters.png')
