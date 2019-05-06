@@ -38,29 +38,6 @@ X = np.vstack(x_stack)
 Y = np.hstack(y_stack)
 print(X.shape, Y.shape)
 
-tick_list = ["VTI","VOO","VEA","VWO","VTV","VUG",
-             "VO","VB","VEU","VIG","VHT","VFH","VPL",
-             "VPU","VSS","VGK","VOT","VSS","VAS","VGT",
-             "EFA","EWA","EWH","EWG","EWU","EWQ","EWL","EWP",
-             "EWD","EWN","EWI","ERUS","UAE","EIS","INDA"]
-             
-x_stack = []
-y_stack = []
-for tick in tick_list:
-  x, y, bob = data_creator(tick)
-  x_stack.append(x)
-  y_stack.append(y)
-
-X = np.vstack(x_stack)
-Y = np.hstack(y_stack)
-print(X.shape, Y.shape)
-
-import fix_yahoo_finance as yf 
-hist = yf.download(tickers = ticker, period = 'max')
-hist = hist["Close"]
-pc = [(hist[i + 1] - hist[i])/hist[i] for i in range(len(hist) -1)]
-print(np.mean(pc), np.std(pc), np.mean(pc) - 4*np.std(pc))
-
 from imblearn.over_sampling import SMOTE
 mask = np.all(np.isnan(X), axis=1) 
 X = X[~mask]
@@ -148,8 +125,8 @@ def reporter(clf, ticker, recall):
   print(classification_report(y,pclass))
   print(confusion_matrix(y, pclass))
       
-tick = "IOO"
-recall = 0.8
+tick = "IOO" #try some general ETFs from other companies or funds 
+recall = 0.8 #you can try 0.9 or some other "minimum" recall requirement for your model. 
 reporter(clf = calib, ticker = tick, recall = recall)
 reporter(clf = bst, ticker = tick, recall = recall)
 
